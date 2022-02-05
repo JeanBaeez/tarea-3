@@ -1,0 +1,67 @@
+.body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+input{
+    width: 100%;
+    padding: 12px 20px !important;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#div2 {
+    vertical-align:top;
+    display: inline-block;
+    width:auto;
+    height:auto;
+   
+    
+}
+#div1 {
+    display: inline-block;
+    width:120px;
+    height:120px;
+    border: 1px solid red;
+}
+
+.side{
+    display: inline-block;
+  
+ 
+}
+.nextButton{
+    margin-top : 200px;
+    margin-right : 200px;
+    float:right;
+}
+.tables{
+    width:100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top:50px;
+    border-radius: 50px;
+    margin-top: 6em !important;
+}
+.tables td, .tables th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.alineacion{
+    text-align: center;
+}
+.atras{
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.btn-elimininar{
+    height: 3px;
+    width: 3px;
+    cursor: pointer;
+}
+.btn-elimininar:hover{
+    
+    background-color: rgb(206, 69, 69);
+}
