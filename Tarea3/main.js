@@ -44,7 +44,7 @@ function GuardarEstudiante() {
     } else {
 
         if (Estudiante != null) {
-           
+
             nombre = document.getElementById("nombre").value;
             matricula = document.getElementById("matricula").value;
             n1 = document.getElementById("n1").value;
@@ -83,13 +83,14 @@ function GuardarEstudiante() {
 }
 function Calcular() {
 
-    
+
     let n1 = document.getElementById("n1").value;
     let n2 = document.getElementById("n2").value;
     let n3 = document.getElementById("n3").value;
     let n4 = document.getElementById("n4").value;
-    if(n1 == "" || n2 == "" || n3 == "" || n4 == ""){
-        alert("Ingrese todos los datos");}
+    if (n1 == "" || n2 == "" || n3 == "" || n4 == "") {
+        alert("Ingrese todos los datos");
+    }
     let promedio = (parseInt(n1) + parseInt(n2) + parseInt(n3) + parseInt(n4)) / 4;
     document.getElementById("promedio").value = promedio;
     if (promedio >= 95) {
@@ -156,6 +157,10 @@ function CrearTabla() {
     header.setAttribute('class', 'container alineacion jumbotron');
     header.innerHTML = `<h1>Estudiantes</h1>`;
     document.body.appendChild(header);
+    let h1 = document.createElement('h1');
+    h1.setAttribute('class', 'container alineacion jumbotron border rounded');
+    h1.innerHTML = `<h1> Conteo de Estudiantes : ${Estudiante.length}</h1>`;
+    document.body.appendChild(h1);
 
     let tabla = document.createElement("table");
     tabla.setAttribute("id", "tabla");
@@ -255,8 +260,8 @@ function CrearTabla() {
 
 
 }
-function Eliminar(i){
-    Estudiante.splice(i,1);
+function Eliminar(i) {
+    Estudiante.splice(i, 1);
     localStorage.setItem('estudiantes', JSON.stringify(Estudiante));
     location.reload();
 
@@ -276,7 +281,7 @@ function LimpiarLocalStorage() {
 }
 
 function LoadChart() {
-  
+
 
     Estudiante = JSON.parse(localStorage.getItem("estudiantes"));
     let ACount = Estudiante.filter((obj) => obj.eq === "A").length;
@@ -284,8 +289,8 @@ function LoadChart() {
     let CCount = Estudiante.filter((obj) => obj.eq === "C").length;
     let DCount = Estudiante.filter((obj) => obj.eq === "D").length;
     let FCount = Estudiante.filter((obj) => obj.eq === "F NO ESTUDIES!!!").length;
-    let data =[ACount,BCount,CCount,DCount,FCount];
-    console.log(ACount,BCount,CCount,DCount,FCount);
+    let data = [ACount, BCount, CCount, DCount, FCount];
+    console.log(ACount, BCount, CCount, DCount, FCount);
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
         type: 'bar',
@@ -325,8 +330,8 @@ function LoadChart() {
 }
 
 
-function createGrafico(){
-    
+function createGrafico() {
+
     let atras = document.createElement('button');
     atras.innerHTML = 'Atras';
     atras.setAttribute('onclick', 'IraInicio()');
