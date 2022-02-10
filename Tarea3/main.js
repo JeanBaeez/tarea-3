@@ -1,6 +1,7 @@
 
 
-let Estudiante = [];
+let data = [];
+
 function Estudiantes(nombre, matricula, n1, n2, n3, n4, promedio, eq) {
     this.nombre = nombre;
     this.matricula = matricula;
@@ -23,11 +24,11 @@ function clean() {
 }
 function GuardarEstudiante() {
 
-    Estudiante = JSON.parse(localStorage.getItem('estudiantes'));
+    let Estudiante = JSON.parse(localStorage.getItem('estudiantes'));
 
-    if (Estudiante.length == 0) {
+
+    if (Estudiante == null) {
         Estudiante = [];
-
         nombre = document.getElementById("nombre").value;
         matricula = document.getElementById("matricula").value;
         n1 = document.getElementById("n1").value;
@@ -39,25 +40,28 @@ function GuardarEstudiante() {
 
         Estudiante = new Estudiantes(nombre, matricula, n1, n2, n3, n4, promedio, eq);
         localStorage.setItem('estudiantes', JSON.stringify(Estudiante));
+
         alert(`Estudiante ${nombre} guardado con exito`);
 
     } else {
 
-        if (Estudiante != null) {
-
-            nombre = document.getElementById("nombre").value;
-            matricula = document.getElementById("matricula").value;
-            n1 = document.getElementById("n1").value;
-            n2 = document.getElementById("n2").value;
-            n3 = document.getElementById("n3").value;
-            n4 = document.getElementById("n4").value;
-            promedio = document.getElementById("promedio").value;
-            eq = document.getElementById("eq").value;
-            Estudiante.push(new Estudiantes(nombre, matricula, n1, n2, n3, n4, promedio, eq));
-            localStorage.setItem('estudiantes', JSON.stringify(Estudiante));
-            alert(`Estudiante ${nombre} guardado con exito`);
-        }
+        nombre = document.getElementById("nombre").value;
+        matricula = document.getElementById("matricula").value;
+        n1 = document.getElementById("n1").value;
+        n2 = document.getElementById("n2").value;
+        n3 = document.getElementById("n3").value;
+        n4 = document.getElementById("n4").value;
+        promedio = document.getElementById("promedio").value;
+        eq = document.getElementById("eq").value;
+        let oldData = JSON.parse(localStorage.getItem('estudiantes'));
+        let newData = new Estudiantes(nombre, matricula, n1, n2, n3, n4, promedio, eq);
+        let UpdatedData = Array.from(oldData);
+        UpdatedData.push(newData);
+        localStorage.setItem('estudiantes', JSON.stringify(UpdatedData));
+        alert(`Estudiante ${nombre} guardado con exito`);
     }
+
+
 
 
 
@@ -78,6 +82,10 @@ function GuardarEstudiante() {
     // }
 
 
+
+
+}
+function LocalStge() {
 
 
 }
@@ -137,7 +145,7 @@ function IraGraficos() {
 function CrearTabla() {
     let atras = document.createElement('button');
     atras.innerHTML = 'Atras';
-    atras.setAttribute('onclick', 'IraInicio()');
+    atras.setAttribute('onclick', 'IrAtras()');
     atras.setAttribute('class', 'btn blue-grey atras');
     document.body.appendChild(atras);
 
@@ -261,17 +269,28 @@ function CrearTabla() {
 
 }
 function Eliminar(i) {
-    Estudiante.splice(i, 1);
-    localStorage.setItem('estudiantes', JSON.stringify(Estudiante));
-    location.reload();
+    if (confirm(`¿Estas seguro de eliminar a ${Estudiante[i].nombre} - ${Estudiante[i]}?`)) {
+        Estudiante.splice(i, 1);
+
+        localStorage.setItem('estudiantes', JSON.stringify(Estudiante));
+        location.reload();
+    }
+
 
 }
 
 
-function IraInicio() {
-    history.back(); //Regresa a la pagina anterior
+function IrAtras() {
+    history.back();
+    //Regresa a la pagina anterior
     //window.location.href = "./index.html";
 }
+function IraEstudiantes() {
+    window.location.href = "estudiantes.html";
+    //Regresa a la pagina anterior
+    //window.location.href = "./index.html";
+}
+
 
 function LimpiarLocalStorage() {
     localStorage.clear();
@@ -334,7 +353,7 @@ function createGrafico() {
 
     let atras = document.createElement('button');
     atras.innerHTML = 'Atras';
-    atras.setAttribute('onclick', 'IraInicio()');
+    atras.setAttribute('onclick', 'IrAtras()');
     atras.setAttribute('class', 'btn blue-grey atras');
     document.body.appendChild(atras);
 
