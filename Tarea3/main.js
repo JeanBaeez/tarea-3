@@ -145,7 +145,7 @@ function IraGraficos() {
 function CrearTabla() {
     let atras = document.createElement('button');
     atras.innerHTML = 'Atras';
-    atras.setAttribute('onclick', 'IraInicio()');
+    atras.setAttribute('onclick', 'IrAtras()');
     atras.setAttribute('class', 'btn blue-grey atras');
     document.body.appendChild(atras);
 
@@ -280,8 +280,8 @@ function Eliminar(i) {
 }
 
 
-function IraInicio() {
-    window.location.href = "index.html";
+function IrAtras() {
+    history.back();
     //Regresa a la pagina anterior
     //window.location.href = "./index.html";
 }
@@ -353,7 +353,7 @@ function createGrafico() {
 
     let atras = document.createElement('button');
     atras.innerHTML = 'Atras';
-    atras.setAttribute('onclick', 'IraEstudiantes()');
+    atras.setAttribute('onclick', 'IrAtras()');
     atras.setAttribute('class', 'btn blue-grey atras');
     document.body.appendChild(atras);
 
