@@ -127,7 +127,7 @@ function cargarDatos() {
 
     let datos = localStorage.getItem('estudiantes');
     if (datos != null) {
-        Estudiante = JSON.parse(datos);
+        let Estudiante = JSON.parse(datos);
         CrearTabla();
 
     } else {
@@ -143,6 +143,7 @@ function IraGraficos() {
 }
 
 function CrearTabla() {
+    let Estudiante = JSON.parse(localStorage.getItem('estudiantes'));
     let atras = document.createElement('button');
     atras.innerHTML = 'Atras';
     atras.setAttribute('onclick', 'IrAtras()');
@@ -220,13 +221,14 @@ function CrearTabla() {
     th.setAttribute("scope", "row");
     th.innerHTML = 'Acciones';
     tbody.appendChild(th);
-    Estudiante = JSON.parse(localStorage.getItem('estudiantes'));
+    var t = JSON.parse(localStorage.getItem('estudiantes'));
+    Estudiante = Array.from(t);
+
     for (let i = 0; i < Estudiante.length; i++) {
         let tr = document.createElement("tr");
         tbody.appendChild(tr);
         let td = document.createElement("td");
         td.setAttribute("class", "text-center");
-        console.log(Estudiante[i].nombre);
         td.innerHTML = Estudiante[i].nombre;
         tr.appendChild(td);
         let td2 = document.createElement("td");
